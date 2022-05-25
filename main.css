@@ -1,0 +1,355 @@
+/*==========================================
+FONT
+==========================================*/
+@import url('https://fonts.googleapis.com/css2?family=Bad+Script&family=Montserrat:ital,wght@0,100;0,300;0,400;0,700;1,100;1,300;1,400;1,700&family=Playfair+Display:wght@400;700&display=swap');
+/*==========================================
+VARIABLES
+==========================================*/
+:root {
+    --clr-accent-200: rgb(226, 129, 11);
+    --clr-accent-300: rgb(239, 24, 24);
+    --clr-accent-700: rgb(59, 57, 92);
+    --clr-accent-900: rgb(3, 22, 48);
+    --clr-neutral-100: rgb(255, 255, 255);
+    --clr-neutral-900: rgb(0, 0, 0);
+
+    --ff-primary: "Montserrat", "Helvetica Neue";
+    --ff-accent: "Playfair Display", Helvetica;
+    --ff-offset: "Bad Script", cursive;
+
+    --font-xl: clamp(3rem, 8vw + 1rem, 5rem);
+    --font-900: clamp(2rem, 5vw + 1rem, 2.3rem);
+    --font-700: clamp(1.5rem, 1.1vw + 1rem, 2.3rem);
+    --font-600: clamp(1rem, 5vw, 1.2rem);
+    --font-400: clamp(.85rem, 2.5vw, 1rem);
+    --font-300: .85rem;
+
+    --lh-400: clamp(1.3rem, 1.8vw + 1rem, 2rem);
+    --lh-300: clamp(1.1rem, 2.3vw, 1.5rem)
+}
+/*
+============================================
+RESET
+============================================
+*/
+*,
+*:before,
+*:after {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+}
+
+/* HTML5 display-role reset for older browsers */
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+    display: block;
+}
+
+body {
+    line-height: 1;
+}
+
+ol,
+ul {
+    list-style: none;
+}
+
+blockquote,
+q {
+    quotes: none;
+}
+
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+    content: "";
+    content: none;
+}
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+/*==============================
+CUSTOM and UTILITY STYLES
+==============================*/
+*,
+*::after,
+*::before {
+    box-sizing: border-box;
+}
+.container {
+    width: min(90vw, 1200px);
+    margin: 0 auto;
+}
+.container--header {
+    display: grid;
+    align-items: center;
+    grid-template-areas: 
+        "intro"
+        "img";
+}
+.container--main {
+    display: grid;
+    place-items: center;
+    grid-template-areas: 
+        "about"
+        "quote"
+        "timeline";
+}
+.intro { 
+    grid-area: intro;
+    padding: 2rem 4rem;
+    text-align: center;
+}
+.legendImg {
+    grid-area: img;
+    height: max-content;
+    width: 100%;
+}
+.about { 
+    grid-area: about;
+}
+blockquote { 
+    grid-area: quote;
+    padding-block: 2rem;
+    width: 80%;
+}
+.timeline {
+    grid-area: timeline;
+    color: var(--clr-accent-900);
+    position: relative;
+}
+h1,
+h2 {
+    font-family: var(--ff-accent);
+}
+h1 {
+    font-size: var(--font-xl);
+    line-height: var(--lh-400);
+}
+h2 {
+    font-size: var(--font-700);
+}
+h3 {
+    font-size: var(--font-600);
+}
+strong {
+    font-weight: 700;
+}
+small {
+    font-size: var(--font-300);
+    font-weight: 400;
+    font-family: var(--ff-primary);
+}
+a {
+    color: var(--clr-neutral-900);
+    text-decoration: none;
+}
+/*===========
+BANNER
+===========*/
+header {
+    background-color: #000;
+    font: 300 .85rem/1.2rem var(--ff-primary);
+    color: #fff;
+    border-bottom: none;
+    width: 101%;
+    max-width: 101%;
+}
+.intro h1 {
+    color: var(--clr-accent-200);
+    text-transform: uppercase;
+}
+.intro span {
+    color: var(--clr-accent-700);
+    padding-left: .5rem;
+}
+.intro h3 {
+    color: var(--clr-neutral-100);
+    text-transform: capitalize;
+    padding-top: clamp(1.5rem, 2.5vh, 2rem);
+    font-family: var(--ff-offset);
+    opacity: .7;
+}
+.underline {
+    height: .1rem;
+    width: 2rem;
+    margin: .5rem auto;
+    background-color: rgb(221, 165, 24);
+}
+.date {
+    font-family: var(--ff-primary);
+    color: var(--clr-neutral-100);
+    text-align: center;
+    opacity: .4;
+    margin-bottom: .5rem;
+}
+.bannerImg {
+    width: 100%;
+    height: 400px;
+    object-fit: contain;
+    opacity: .9;
+}
+.about h2 {
+    font-size: var(--font-700);
+    letter-spacing: 1.5px;
+    font-family: var(--ff-accent);
+    text-transform: capitalize;
+    font-weight: 700;
+    padding-block: 1.5rem;
+}
+.about p {
+    font-size: var(--font-400);
+    font-family: var(--ff-primary);
+    line-height: var(--lh-300);
+    margin-bottom: .3rem;
+}
+.quote {
+    padding-bottom: 1rem;
+    color: var(--clr-accent-300);
+}
+a:hover {
+    color: var(--clr-accent-300);
+}
+.quote i {
+    font-size: var(--font-600);
+    padding-right: .3rem;
+}
+.quote p {
+    display: inline;
+    font-size: var(--font-600);
+    padding-right: .3rem;
+}
+/*==========================
+TIMELINE
+==========================*/
+.timeline h2 {
+    text-align: center;
+    font-size: var(--font-900);
+    text-transform: capitalize;
+    color: var(--clr-neutral-900);
+    padding-bottom: 3.5rem;
+}
+.timeline::before {
+    position: absolute;
+    content: "";
+    height: calc(100% - 6rem);
+    width: .25rem;
+    top: 3rem;
+    left: 1.403rem;
+    background-color: var(--clr-accent-900);
+    z-index: -1;
+}
+.headline {
+    font-size: var(--font-600);
+    font-weight: 700;
+    padding-left: 1rem;
+    padding-bottom: min(1.1rem, 2vh);
+}
+.info {
+    font-size: var(--font-400);
+    line-height: var(--lh-300);
+    padding-inline: 1.5rem;
+    padding-block-end: min(3rem, 5vh);
+}
+@media all and (min-width: 540px) {
+    .container--header {
+        grid-template-columns: 1fr 1fr;
+        justify-content: start;
+        width: 100%;
+        grid-template-areas:
+            "intro img";
+    }
+    .legendImg {
+        padding-top: 1rem;
+    }
+    .bannerImg {
+        height: 350px;
+    }
+}
+@media all and (min-width: 710px) {
+    .container--main {
+        grid-template-columns: 1fr 1fr;
+        column-gap: 2rem;
+        width: 100%;
+        grid-template-areas: 
+            "timeline about"
+            "timeline quote";
+    }
+    .timeline {
+        height: 760px;
+        width: 100%;
+        position: relative;
+        overflow: hidden;
+        transform: translateZ(0);
+        margin-block: .5rem 3rem;
+    }
+    .hide-scroll {
+        position: absolute;
+        height: 760px;
+        width: 100%;
+        overflow-y: scroll;
+        right: -15px;
+    }
+    .timeline::before {
+        height: 100%;
+        left: calc(1.403rem + 15px);
+    }
+    .fa-ul {
+        position: absolute;
+        top: 6rem;
+    }
+    .fixed {
+        position: fixed;
+        background-color: var(--clr-neutral-100);
+        top: 0;
+        left: 1rem;
+        padding-bottom: 1rem;
+        width: 100%;
+        z-index: 10;
+    }
+    .fixed h2 {
+        padding-bottom: 0;
+    }
+    .about,
+    blockquote {
+        margin-right: 15px;
+        padding-inline: .3rem;
+    }
+}
+@media all and (min-width: 920px) {
+    .container--main {
+        grid-template-columns: 2fr 3fr 2fr;
+        grid-template-areas: 
+            "timeline about quote";
+    }
+    .timeline,
+    .hide-scroll {
+        height: 480px;
+    }
+    .about {
+        margin-right: 0;
+    }
+    blockquote {
+        align-self: end;
+        margin-bottom: 3rem;
+    }
+    .quote p {
+        font-size: var(--font-400);
+    }
+}
