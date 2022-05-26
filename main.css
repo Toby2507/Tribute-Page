@@ -8,9 +8,11 @@ VARIABLES
 :root {
     --clr-accent-200: rgb(226, 129, 11);
     --clr-accent-300: rgb(239, 24, 24);
+    --clr-accent-600: rgb(35, 116, 228);
     --clr-accent-700: rgb(59, 57, 92);
     --clr-accent-900: rgb(3, 22, 48);
     --clr-neutral-100: rgb(255, 255, 255);
+    --clr-neutral-400: rgb(148, 148, 148);
     --clr-neutral-900: rgb(0, 0, 0);
 
     --ff-primary: "Montserrat", "Helvetica Neue";
@@ -19,10 +21,11 @@ VARIABLES
 
     --font-xl: clamp(3rem, 8vw + 1rem, 5rem);
     --font-900: clamp(2rem, 5vw + 1rem, 2.3rem);
-    --font-700: clamp(1.5rem, 1.1vw + 1rem, 2.3rem);
+    --font-800: clamp(1.5rem, 3.5vw + 1rem, 2rem);
+    --font-700: clamp(1.2rem, 1.05vw + 1rem, 2.3rem);
     --font-600: clamp(1rem, 5vw, 1.2rem);
     --font-400: clamp(.85rem, 2.5vw, 1rem);
-    --font-300: .85rem;
+    --font-300: clamp(.75rem, 2vw, .85rem);
 
     --lh-400: clamp(1.3rem, 1.8vw + 1rem, 2rem);
     --lh-300: clamp(1.1rem, 2.3vw, 1.5rem)
@@ -60,6 +63,7 @@ section {
 
 body {
     line-height: 1;
+    font-family: var(--ff-primary);
 }
 
 ol,
@@ -95,21 +99,25 @@ CUSTOM and UTILITY STYLES
 .container {
     width: min(90vw, 1200px);
     margin: 0 auto;
+    display: grid;
 }
 .container--header {
-    display: grid;
     align-items: center;
     grid-template-areas: 
         "intro"
         "img";
 }
 .container--main {
-    display: grid;
     place-items: center;
     grid-template-areas: 
         "about"
         "quote"
         "timeline";
+}
+.container--footer {
+    place-items: center;
+    padding-top: 3rem;
+    margin-inline: auto;
 }
 .intro { 
     grid-area: intro;
@@ -123,16 +131,22 @@ CUSTOM and UTILITY STYLES
 }
 .about { 
     grid-area: about;
+    margin-right: .5rem;
+    padding: 1.5rem;
 }
 blockquote { 
     grid-area: quote;
-    padding-block: 2rem;
+    padding-block: 1rem 2rem;
     width: 80%;
+    text-align: justify;
 }
 .timeline {
     grid-area: timeline;
     color: var(--clr-accent-900);
     position: relative;
+    margin-block: 2rem 0;
+    margin-right: .7rem;
+    padding: .5rem;
 }
 h1,
 h2 {
@@ -148,11 +162,14 @@ h2 {
 h3 {
     font-size: var(--font-600);
 }
+p {
+    text-align: justify;
+}
 strong {
-    font-weight: 700;
+    font-weight: 400;
 }
 small {
-    font-size: var(--font-300);
+    font-size: .8rem;
     font-weight: 400;
     font-family: var(--ff-primary);
 }
@@ -163,13 +180,15 @@ a {
 /*===========
 BANNER
 ===========*/
-header {
+header, 
+footer {
     background-color: #000;
     font: 300 .85rem/1.2rem var(--ff-primary);
-    color: #fff;
+    color: var(--clr-neutral-100);
     border-bottom: none;
     width: 101%;
     max-width: 101%;
+    overflow-x: clip;
 }
 .intro h1 {
     color: var(--clr-accent-200);
@@ -205,6 +224,9 @@ header {
     object-fit: contain;
     opacity: .9;
 }
+/*======================
+MAIN
+======================*/
 .about h2 {
     font-size: var(--font-700);
     letter-spacing: 1.5px;
@@ -215,9 +237,8 @@ header {
 }
 .about p {
     font-size: var(--font-400);
-    font-family: var(--ff-primary);
     line-height: var(--lh-300);
-    margin-bottom: .3rem;
+    margin-bottom: .8rem;
 }
 .quote {
     padding-bottom: 1rem;
@@ -232,41 +253,73 @@ a:hover {
 }
 .quote p {
     display: inline;
-    font-size: var(--font-600);
+    font-size: var(--font-300);
     padding-right: .3rem;
 }
-/*==========================
-TIMELINE
-==========================*/
+/* TIMELINE */
 .timeline h2 {
     text-align: center;
     font-size: var(--font-900);
     text-transform: capitalize;
     color: var(--clr-neutral-900);
-    padding-bottom: 3.5rem;
+    padding-bottom: 3rem;
 }
 .timeline::before {
     position: absolute;
     content: "";
-    height: calc(100% - 6rem);
+    height: calc(100% - 6.5rem);
     width: .25rem;
-    top: 3rem;
-    left: 1.403rem;
+    top: 3.5rem;
+    left: 1.903rem;
     background-color: var(--clr-accent-900);
     z-index: -1;
 }
 .headline {
     font-size: var(--font-600);
     font-weight: 700;
-    padding-left: 1rem;
+    padding-inline: 1rem;
     padding-bottom: min(1.1rem, 2vh);
 }
 .info {
     font-size: var(--font-400);
     line-height: var(--lh-300);
     padding-inline: 1.5rem;
-    padding-block-end: min(3rem, 5vh);
+    padding-block-end: min(2rem, 5vh);
 }
+/*=========================
+FOOTER
+=========================*/
+.socials {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+}
+.socials i {
+    color: var(--clr-neutral-100);
+    font-size: var(--font-800);
+}
+.links {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-block: 2rem 1rem;
+}
+.links a {
+    color: var(--clr-neutral-400);
+    text-transform: capitalize;
+    font-size: var(--font-300);
+}
+.footersmall {
+    color: var(--clr-neutral-400);
+    margin-bottom: .5rem;
+    font-size: min(.8rem, 3vw);
+}
+.mandm {
+    color: var(--clr-accent-600);
+}
+/*==========================
+MEDIA QUERIES
+==========================*/
 @media all and (min-width: 540px) {
     .container--header {
         grid-template-columns: 1fr 1fr;
@@ -281,6 +334,12 @@ TIMELINE
     .bannerImg {
         height: 350px;
     }
+    .links {
+        gap: 2rem;
+    }
+    .links a {
+        font-size: var(--font-400);
+    }
 }
 @media all and (min-width: 710px) {
     .container--main {
@@ -292,23 +351,25 @@ TIMELINE
             "timeline quote";
     }
     .timeline {
-        height: 760px;
+        height: 770px;
         width: 100%;
         position: relative;
-        overflow: hidden;
+        -webkit-transform: translateZ(0);
         transform: translateZ(0);
+        overflow: hidden;
         margin-block: .5rem 3rem;
+        margin-inline: 1rem 0;
     }
     .hide-scroll {
         position: absolute;
-        height: 760px;
+        height: 770px;
         width: 100%;
         overflow-y: scroll;
-        right: -15px;
+        right: -18px;
     }
     .timeline::before {
         height: 100%;
-        left: calc(1.403rem + 15px);
+        left: calc(1.403rem + 18px);
     }
     .fa-ul {
         position: absolute;
@@ -318,8 +379,8 @@ TIMELINE
         position: fixed;
         background-color: var(--clr-neutral-100);
         top: 0;
-        left: 1rem;
-        padding-bottom: 1rem;
+        left: 0;
+        padding-block: 2rem 1rem;
         width: 100%;
         z-index: 10;
     }
@@ -328,19 +389,23 @@ TIMELINE
     }
     .about,
     blockquote {
-        margin-right: 15px;
+        margin-right: 18px;
         padding-inline: .3rem;
+        align-self: start;
     }
 }
 @media all and (min-width: 920px) {
     .container--main {
-        grid-template-columns: 2fr 3fr 2fr;
+        grid-template-columns: 2.3fr 3fr 1.7fr;
         grid-template-areas: 
             "timeline about quote";
     }
     .timeline,
     .hide-scroll {
-        height: 480px;
+        height: min(455px, 55vw);
+    }
+    .fixed {
+        padding-block: 2rem 1rem;
     }
     .about {
         margin-right: 0;
@@ -349,7 +414,13 @@ TIMELINE
         align-self: end;
         margin-bottom: 3rem;
     }
-    .quote p {
-        font-size: var(--font-400);
+}
+@media all and (min-width: 1200px) {
+    .timeline,
+    .hide-scroll {
+        height: min(405px, 55vw);
+    }
+    blockquote {
+        margin-bottom: 5rem;
     }
 }
